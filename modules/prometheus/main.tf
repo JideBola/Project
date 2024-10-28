@@ -125,5 +125,5 @@ resource "helm_release" "prometheus" {
     value = var.main-region
   }
 
-}
+} 
 

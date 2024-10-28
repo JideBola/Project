@@ -16,7 +16,7 @@ variable "env_name" {
 
 variable "vpc_id" {
   description = "VPC ID which Load balancers will be  deployed in"
-  type        = string
+  type        = string 
 }
 
 variable "private_subnets" {

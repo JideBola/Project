@@ -5,7 +5,7 @@
 
 variable "main-region" {
   type    = string
-  default = "us-west-2"
+  default = "eu-west-2"
 }
 
 
@@ -15,7 +15,7 @@ variable "main-region" {
 
 variable "cluster_name" {
   type    = string
-  default = "dominion-cluster"
+  default = "jide-cluster"
 }
 
 variable "rolearn" {
