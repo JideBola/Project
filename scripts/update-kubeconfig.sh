@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 response="$(aws eks list-clusters --region eu-west-2 --output text | grep -i jide-cluster 2>&1)" 
 if [[ $? -eq 0 ]]; then
     echo "Success: jide-cluster exist"
