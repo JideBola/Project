@@ -4,7 +4,7 @@ pipeline {
                 choice(name: 'Deployment_Type', choices:['apply','destroy'],description:'The deployment type')
                   }
     environment {
-        EMAIL_TO = 'sbrookee2112@gmail.com'
+        EMAIL_TO = 'bolarinwaibrahimo@gmail.com'
     }
     stages {
         stage('1.Terraform init') {
