@@ -44,5 +44,7 @@ resource "aws_vpc_endpoint" "prometheus" {
 
   #private_dns_enabled = true
   subnet_ids = var.private_subnets
+  
+  depends_on = [aws_security_group.allow_tls_grafana]
 }
 

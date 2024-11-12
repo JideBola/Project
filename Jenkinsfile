@@ -34,19 +34,29 @@ pipeline {
         stage('4.Terraform Deploy') {              
             steps { 
                 echo 'Terraform ${params.Deployment_Type} phase'  
+                sh 'chmod +x scripts/update-kubeconfig.sh'
+                sh 'ls -l scripts/update-kubeconfig.sh'  
                 sh "AWS_REGION=eu-west-2 terraform ${params.Deployment_Type} --auto-approve"
                 sh("""scripts/update-kubeconfig.sh""")                   
                 }
                 }
         stage ('5. Email Notification') {
             steps {
-               mail bcc: 'bolarinwaibrahimo@gmail.com', body: '''Terraform deployment is completed.
-               Let me know if the changes look okay.
-               Thanks,
-               Dominion System Technologies,
-              +1 (313) 413-1477''', cc: 'bolarinwaibrahimo@gmail.com', from: '', replyTo: '', subject: 'Terraform Infra deployment completed!!!', to: 'sbrookee2112@gmail.com'
+                script {
+                try {
+                       mail bcc: 'bolarinwaibrahimo@gmail.com', 
+                       body: '''Terraform deployment is completed.
+                        Let me know if the changes look okay.
+                        Thanks,
+                        Jide Domain System Technologies,
+              +44 7887768539''', cc: 'bolarinwaibrahimo@gmail.com', from: '', replyTo: '', subject: 'Terraform Infra deployment completed!!!', to: 'sarahajibola40@gmail.com'
                           
-               }    
+               }  
+               catch (Exception e) {
+                        echo "Failed to send email notification: ${e}"
+               }  
+            }
           }
+        } 
      }       
 } 
