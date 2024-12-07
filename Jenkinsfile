@@ -34,8 +34,8 @@ pipeline {
         stage('4.Terraform Deploy') {              
             steps { 
                 echo 'Terraform ${params.Deployment_Type} phase'  
-                // sh 'chmod +x scripts/update-kubeconfig.sh'
-                // sh 'ls -l scripts/update-kubeconfig.sh'  
+                sh 'chmod +x scripts/update-kubeconfig.sh'
+                sh 'ls -l scripts/update-kubeconfig.sh'  
                 sh "AWS_REGION=eu-west-2 terraform ${params.Deployment_Type} --auto-approve"
                 sh("""scripts/update-kubeconfig.sh""")                   
                 }
